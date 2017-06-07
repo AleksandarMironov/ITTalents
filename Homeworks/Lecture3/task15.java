@@ -8,9 +8,11 @@ public class task15 {
 		
 		int n = sc.nextInt();
 		long sum = 0;
+		int i = 1;
 		
-		for (int i = 1; i <= n; i++){
+		while (i <= n ){
 			sum += i;
+			i++;
 		}
 		
 		System.out.println(sum);
