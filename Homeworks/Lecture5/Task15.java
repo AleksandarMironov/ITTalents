@@ -34,8 +34,10 @@ public class Task15 {
 						continue;
 					}
 					
-					if((arr[i] + arr[j] + arr[k]) > biggestSum){
-						biggestSum = (arr[i] + arr[j] + arr[k]);
+					//we consider that condition is for 3 different elements from array
+					if((Math.abs(arr[i]) + Math.abs(arr[j]) + Math.abs(arr[k])) > biggestSum){
+						biggestSum = (Math.abs(arr[i]) + Math.abs(arr[j]) + Math.abs(arr[k]));
+						//we can use if(arr[i]<0) arr[i]*=-1, but Math.abs is easy way :)
 						firstBiggest = arr[i];
 						secondBiggest = arr[j];
 						thirdBiggest = arr[k];
