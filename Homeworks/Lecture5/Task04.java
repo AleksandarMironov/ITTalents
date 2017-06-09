@@ -1,8 +1,8 @@
 import java.util.Scanner;
 
-public class Task01 {
+public class Task04 {
 	public static void main(String[] args) {
-		Scanner sc = new Scanner(System.in);
+Scanner sc = new Scanner(System.in);
 		
 		System.out.println("Enter size of Array");
 		int size = sc.nextInt();
@@ -19,18 +19,19 @@ public class Task01 {
 			arr[i] = sc.nextInt();
 		}
 		
-		int smallest = Integer.MAX_VALUE;
+		boolean isSpecular = true;
+		
 		for (int i = 0; i < arr.length; i++) {
-			if(arr[i] % 3 == 0 && smallest > arr[i]){
-				smallest = arr[i];
+			if(arr[i] != arr[arr.length - 1 - i]){
+				isSpecular = false;
 			}
 		}
 		
-		if(smallest == Integer.MAX_VALUE){
-			System.out.println("No such number!");
+		if (isSpecular){
+			System.out.println("Array is specular");
 		} else {
-			System.out.println(smallest);
-		}	
+			System.out.println("Array is NOT specular");
+		}
 		
 		sc.close();
 	}
