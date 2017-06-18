@@ -4,13 +4,12 @@ public class Task07 {
 	public static void main(String[] args) {
 		Scanner sc = new Scanner(System.in);
 		
-		System.out.println("Enter size of Array");
-		int size = sc.nextInt();
+		int size;
 		
-		while (size <= 3){
+		do{
 			System.out.println("Enter valid size of array");
 			size = sc.nextInt();
-		}
+		} while (size < 3);
 		
 		int[] arr = new int[size];
 		

@@ -3,14 +3,13 @@ import java.util.Scanner;
 public class Task06 {
 	public static void main(String[] args) {
 		Scanner sc = new Scanner(System.in);
+
+		int size;
 		
-		System.out.println("Enter size of first Array");
-		int size = sc.nextInt();
-		
-		while (size <= 0){
-			System.out.println("Enter valid size of array");
+		do{
+			System.out.println("Enter valid size of first array");
 			size = sc.nextInt();
-		}
+		} while (size <= 0);
 		
 		int[] firstArr = new int[size];
 		
@@ -18,14 +17,11 @@ public class Task06 {
 			System.out.println("Enter " + (i+1) + " element from first array:");
 			firstArr[i] = sc.nextInt();
 		}
-
-		System.out.println("Enter size of second Array");
-		size = sc.nextInt();
 		
-		while (size <= 0){
-			System.out.println("Enter valid size of array");
+		do{
+			System.out.println("Enter valid size of second array");
 			size = sc.nextInt();
-		}
+		}while (size <= 0);
 		
 		int[] secondArr = new int[size];
 		

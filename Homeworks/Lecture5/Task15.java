@@ -4,13 +4,12 @@ public class Task15 {
 	public static void main(String[] args) {
 		Scanner sc = new Scanner(System.in);
 		
-		System.out.println("Enter size of Array");
-		int size = sc.nextInt();
+		int size;
 		
-		while (size <= 3){
+		do{
 			System.out.println("Enter valid size of array");
 			size = sc.nextInt();
-		}
+		} while (size <= 0);
 		
 		double[] arr = new double[size];
 		
@@ -49,6 +48,5 @@ public class Task15 {
 		System.out.println(firstBiggest + ", " + secondBiggest + ", " + thirdBiggest);
 		
 		sc.close();
-		// test numbers 7.13; 0.2; 4.9; 5.1; 6.34; 1.12 
 	}
 }

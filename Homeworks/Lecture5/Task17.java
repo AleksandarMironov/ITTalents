@@ -1,6 +1,6 @@
 import java.util.Scanner;
 
-public class Task01 {
+public class Task17 {
 	public static void main(String[] args) {
 		Scanner sc = new Scanner(System.in);
 
@@ -18,18 +18,17 @@ public class Task01 {
 			arr[i] = sc.nextInt();
 		}
 		
-		int smallest = Integer.MAX_VALUE;
-		for (int i = 0; i < arr.length; i++) {
-			if(arr[i] % 3 == 0 && smallest > arr[i]){
-				smallest = arr[i];
+		boolean isJagged = true;
+		
+		for (int i = 1; i < arr.length - 1; i++) {
+			if(!((arr[i - 1] < arr[i] && arr[i] > arr[i + 1]) ||
+					(arr[i - 1] > arr[i] && arr[i] < arr[i + 1]))){
+				isJagged = false;
+				break;
 			}
 		}
 		
-		if(smallest == Integer.MAX_VALUE){
-			System.out.println("No such number!");
-		} else {
-			System.out.println(smallest);
-		}	
+		System.out.println(isJagged? "It is jagged" : "It is NOT jagged");
 		
 		sc.close();
 	}

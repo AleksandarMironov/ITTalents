@@ -2,15 +2,14 @@ import java.util.Scanner;
 
 public class Task04 {
 	public static void main(String[] args) {
-Scanner sc = new Scanner(System.in);
+		Scanner sc = new Scanner(System.in);
 		
-		System.out.println("Enter size of Array");
-		int size = sc.nextInt();
-		
-		while (size <= 0){
+		int size;
+
+		do{
 			System.out.println("Enter valid size of array");
 			size = sc.nextInt();
-		}
+		} while (size <= 0);
 		
 		int[] arr = new int[size];
 		
