@@ -11,6 +11,7 @@ public class Task10 {
 			input[i] += 5;
 		}
 		
+		System.out.println("Edited text:");
 		for (int i = 0; i < input.length; i++) {
 			System.out.print(input[i]);
 		}

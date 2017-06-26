@@ -15,9 +15,11 @@ public class Task03 {
 		if(firstWord.length() > secondWord.length()){
 			System.out.println("First word is longer");
 			checkableWordLength = secondWord.length();
+			
 		} else if(firstWord.length() < secondWord.length()){
 			System.out.println("Second word is longer");
 			checkableWordLength = firstWord.length();
+			
 		} else {
 			System.out.println("Words length is equal");
 			checkableWordLength = firstWord.length();
