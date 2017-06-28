@@ -6,6 +6,8 @@ public class Task11 {
 		//print all elements from int arr
 		printArray(arr);
 		
+		System.out.println();
+		
 		//print first x elements from int arr
 		printArrayRecursion(arr, arr.length);
 	}
