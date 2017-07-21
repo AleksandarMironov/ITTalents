@@ -9,6 +9,14 @@ public class Player {
 	private ArrayList <Card> wonCards = new ArrayList<>(); 
 	
 	public Player (String name){
+		setName(name);
+	}
+	
+	public String getName(){
+		return this.name;
+	}
+	
+	private void setName(String name) {
 		if (name.isEmpty()){
 			System.out.println("Player can not be anonimous! Now player name is Vetrosvir"); //exception hire will be better 
 			this.name = "Vetrosvir";
@@ -16,11 +24,7 @@ public class Player {
 			this.name = name;
 		}
 	}
-	
-	public String getName(){
-		return this.name;
-	}
-	
+
 	public void wonHand (Card ...cards){
 		for(Card c : cards){
 			this.wonCards.add(c);

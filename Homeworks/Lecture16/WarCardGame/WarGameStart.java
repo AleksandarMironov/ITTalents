@@ -14,6 +14,7 @@ public class WarGameStart {
 		System.out.println("\nEnter second player name:");
 		tempPlayerName = sc.nextLine().trim();
 		Player secondPlayer = new Player(tempPlayerName);
+		
 		Dealer.deal(firstPlayer, secondPlayer);
 		
 		while(firstPlayer.haveCards() && secondPlayer.haveCards()){		
@@ -91,7 +92,7 @@ public class WarGameStart {
 			}
 			
 			System.out.println("\nPress ENTER to contenue!\n");
-			
+
 			String cantTinkBetterWay = sc.nextLine(); //KeyEvent will be better but!?
 		}
 		

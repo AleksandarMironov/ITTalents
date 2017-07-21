@@ -5,15 +5,35 @@ public class StudentGroup {
 	Student [] students;
 	int freePlaces;
 	
-	public StudentGroup() {
-		this.students = new Student [5];
-		this.freePlaces = 5;
+	public StudentGroup() {		
+		setFreePlaces(5);
+		this.students = new Student [this.freePlaces];
 	}
 	
 	public StudentGroup(String subject) {
 		this();
-		this.groupSubject = subject;
+		setGroupSubject(subject);
 	}
+	
+	private void setGroupSubject(String groupSubject) {
+		if(!groupSubject.isEmpty()){
+			this.groupSubject = groupSubject;
+		} else {
+			System.out.println("You did not entered group subject. Now you have Java group!");
+			this.groupSubject = "Java";
+		}
+	}
+
+	private void setFreePlaces(int freePlaces) {
+		if(freePlaces < 2){
+			System.out.println("Group must have atleast 2 students!");
+			this.freePlaces = 2;
+		} else {
+			this.freePlaces = freePlaces;
+		}
+	}
+
+
 	
 	void addStudent (Student s){
 		if (s.subject.equalsIgnoreCase(this.groupSubject)) {

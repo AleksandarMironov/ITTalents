@@ -16,6 +16,11 @@ public class Card {
 	}
 	
 	public String toString(){
-		return "\n ---- \n| ".concat(rank).concat(suit).concat(" |\n ---- ");
+		return "\n ----- \n| ".concat(rank).concat(suit).concat(" |\n ----- ");
 	}
 }
+
+//♧ 
+//♢ 
+//♡ 
+//♠
