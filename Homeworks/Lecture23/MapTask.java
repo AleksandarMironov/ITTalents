@@ -25,13 +25,7 @@ public class MapTask {
 			}
 		}
 		
-		int max = 0;
-		
-		for (int a : inMap.values()){
-			if(a > max){
-				max = a;
-			}
-		}
+		int max = Collections.max(inMap.values());
 		
 		ArrayList<String> outputArr = new ArrayList<>();
 		
@@ -61,5 +55,33 @@ public class MapTask {
 			System.out.println(outputArr.get(i));
 		}
 		sc.close();
+		
+		System.out.println("\nSecond solution\n************************************\n");
+		
+		ArrayList<Entry<Character, Integer>> entryArr = new ArrayList<>();
+		
+		for (Entry<Character, Integer> e : inMap.entrySet()){
+			entryArr.add(e);
+		}
+		
+		Collections.sort(entryArr, new Comparator<Entry<Character, Integer>>() { 
+
+			@Override
+			public int compare(Entry<Character, Integer> e1, Entry<Character, Integer> e2) {
+				return e2.getValue() - e1.getValue();
+			}		
+		});
+		
+		for (int i = 0; i < entryArr.size(); i++) {
+			System.out.print(entryArr.get(i).getKey());
+			System.out.print(": ");
+			System.out.print(entryArr.get(i).getValue() + " ");
+			for (int j = 0; j < entryArr.get(i).getValue(); j++) {
+				for (int j2 = 0; j2 < 20/max; j2++) {
+					System.out.print("#");
+				}
+			}
+			System.out.println();
+		}
 	}
 }
