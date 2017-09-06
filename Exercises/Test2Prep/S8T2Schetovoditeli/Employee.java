@@ -10,9 +10,8 @@ public abstract class Employee {
 	private int wrongDocuments;
 	private ArrayList<Document> tasks;
 	private String dep;
-	private Office office;
 	
-	public Employee(String name, double selary, EmployeeRank rank, String dep, Office office) {
+	public Employee(String name, double selary, EmployeeRank rank, String dep) {
 
 		if(!name.isEmpty() && name != null){
 			this.name = name;
@@ -24,12 +23,12 @@ public abstract class Employee {
 		this.selary = selary;
 		this.rank = rank;
 		this.dep = dep;
-		this.office = office;
 		this.wrongDocuments = 0;
+		this.tasks = new ArrayList<>();
 	}
 	
 	public String getName() {
-		return name;
+		return this.name;
 	}
 
 	public double getSelary() {
@@ -104,7 +103,20 @@ public abstract class Employee {
 		}
 	}
 	
-	public void getMoreMoney(){
-		this.selary *= 1.1;
+	public void getMoreMoney(double multiplayer){
+		this.selary *= multiplayer;
 	}
+	
+	public void getFullInfo(){
+		System.out.println("name:" + name + ", rank:" + rank + " dep: " + dep + " selary:" + selary + "Errors: " + wrongDocuments);
+	}
+	
+	@Override
+	public String toString() {
+		return "Dep: " + dep + " [name=" + name + ", rank=" + rank + "]";
+	}
+
+	
+	
+	
 }

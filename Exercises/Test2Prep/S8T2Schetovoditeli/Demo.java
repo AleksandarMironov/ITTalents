@@ -1,8 +1,12 @@
 package S8T2Schetovoditeli;
 
+import java.util.ArrayList;
+
 public class Demo {
 	public static void main(String[] args) {
 		Office office = new Office();
+		
+		//////////////////////////
 		
 		office.naznachi("IT", "Pesho");
 		office.naznachi("IT", "Gosho");
@@ -24,6 +28,36 @@ public class Demo {
 		office.naznachi("Nz", "Nqmam");
 		office.naznachi("Nz", "Imena");
 		office.naznachi("Nz", "Random");
-
+		
+		//////////////////
+		
+		ArrayList<Document> documents = new ArrayList<>();
+		
+		for (int i = 0; i < 50; i++) {
+			if (UT.intInRange(0, 100) < 80){
+				documents.add(new DocumentNormal(UT.randomString(5)));
+			} else {
+				documents.add(new DocumentSecret(UT.randomString(5), UT.randomString(8)));
+			}
+		}
+		
+		for (Document document : documents) {
+			office.doWork(document);
+		}
+		
+		//////////////////////
+		
+		ArrayList<Document> documentsTransfer = new ArrayList<>();
+		for (int i = 0; i < 10; i++) {
+			documentsTransfer.add(new DocumentNormal(UT.randomString(5)));
+		}
+		
+		for (Document document : documentsTransfer) {
+			office.doTransferWork(document);
+		}
+		
+		///////////////////////////////////////////
+		
+		office.fullInfo();
 	}
 }

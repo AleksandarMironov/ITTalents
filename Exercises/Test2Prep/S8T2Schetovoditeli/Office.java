@@ -20,24 +20,25 @@ public class Office {
 	public void naznachi (String depName, String employeeName){
 		if(!this.departaments.containsKey(depName)){
 			this.departaments.put(depName, new ArrayList<>());
-			this.departaments.get(depName).add(new SeniorEmployee(UT.randomString(7), UT.intInRange(1500, 3000), depName, this));
+			this.departaments.get(depName).add(new SeniorEmployee(employeeName, UT.intInRange(1500, 3000), depName, this));
 		} else {
 			if(UT.ran.nextBoolean()){
-				this.departaments.get(depName).add(new MidEmployee(UT.randomString(7), UT.intInRange(1000, 2000), depName, this));
+				this.departaments.get(depName).add(new MidEmployee(employeeName, UT.intInRange(1000, 2000), depName, this));
 			} else {
-				this.departaments.get(depName).add(new EmployeeJunior(UT.randomString(7), UT.intInRange(900, 1800), depName, this));
+				this.departaments.get(depName).add(new EmployeeJunior(employeeName, UT.intInRange(900, 1800), depName, this));
 			}
 		}
 		this.employees++;
 	}
 	
 	public void doWork(Document d){
-		if(d.getClass().getSimpleName().equals("DocumentSecret")){
+		this.documents.add(d);
+		if(d.getClass().getSimpleName().equals("DocumentSecret")){  //better with enum
 			int counter = UT.intFrom0To(this.departaments.keySet().size() - 1);
 			for (Entry<String, ArrayList<Employee>> e : this.departaments.entrySet()) {
 				if(counter == 0){
-					e.getValue().get(0).work(d);
 					System.out.println("Task: " + d.getName() + " is assignet to " + e.getValue().get(0).getName() );
+					e.getValue().get(0).work(d);
 					return;
 				}
 				counter--;
@@ -47,14 +48,32 @@ public class Office {
 			for (ArrayList<Employee> a : this.departaments.values()) {
 				for (Employee employee : a) {
 					if(counter == 0){
-						employee.work(d);
 						System.out.println("Task: " + d.getName() + " is assignet to " + employee.getName() );
+						employee.work(d);
 						return;
 					}
 					counter --;
 				}
 			}
 		}
+	}
+	
+	public void doTransferWork(Document d){
+		this.documents.add(d);
+		int counter = this.employees - UT.intFrom0To(employees - 1);
+		for (ArrayList<Employee> a : this.departaments.values()) {
+			for (Employee employee : a) {
+				if(counter <= 0){
+					if(employee instanceof ITransfer){
+						System.out.println("Task: " + d.getName() + " is assignet to " + employee.getName() + " for transfer");
+						((ITransfer)employee).transferWork(d);
+						return;
+					}	
+				}
+				counter --;
+			}
+		}
+		doTransferWork(d);
 	}
 	
 	public void getDocumentsInfo(){
@@ -119,9 +138,28 @@ public class Office {
 		for (Employee e : temp) {
 			if(count < 3){
 				System.out.println(++count + "." + e.getName() + " from " + e.getDep() + " with " + e.getWrongDocuments());
-				e.getMoreMoney();
+				e.getMoreMoney(1.1);
 			}
 		}
 		System.out.println("Salary is rised!");
+	}
+	
+	ArrayList<Employee> getEmplFromDep(String dep){
+		return this.departaments.get(dep);
+	}
+	
+	public void fullInfo(){
+		getDocumentsInfo();
+		getEmployeeWithBestResults();
+		getWorstDep();
+		System.out.println("\nEmployee list:");
+		for (ArrayList<Employee> a : this.departaments.values()) {
+			for (Employee employee : a) {
+				System.out.println(employee);
+			}
+		}
+		getSelarySpendings();
+		get3BestEmployees();
+		getSelarySpendings();
 	}
 }

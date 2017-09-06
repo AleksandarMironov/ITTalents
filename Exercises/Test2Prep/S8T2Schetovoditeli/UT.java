@@ -6,6 +6,10 @@ public class UT {
 public static Random ran = new Random();
 	
 	public static int intInRange(int start, int stop){
+		if(stop < start){
+			System.out.println("UT err");
+			return 0;
+		}
 		return (ran.nextInt(stop + 1 - start) + start);
 	}
 	
